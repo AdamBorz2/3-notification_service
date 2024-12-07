@@ -1,0 +1,25 @@
+server:
+  port: 9191
+
+keycloak:
+  realm: ITM-Platform
+  resource: user-service
+  auth-server-url: http://localhost
+  credentials:
+    secret: c2nfhy4CHjko7iCR3JcS1MiVikyvq4PQ
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test
+    username: test
+    password: test
+
+integration:
+  internal:
+    base-url: http://localhost:9191
+    token-uri: http://backend-keycloak-auth:8080/realms/ITM-Platform/protocol/openid-connect/token
+    client-id: inner-rest
+    client-secret: '**********'
+    v1:
+      user-service:
+        service:
+          group-name: /api/v1/service/users/{userId}/groupName
